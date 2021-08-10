@@ -1,0 +1,106 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+// heading comp
+.parentHead {
+    width: 100vw;
+    background-color: hsl(0, 0%, 100%);
+    // box-shadow: 0px 0px 30px 0px black;
+    margin-bottom: 1rem;
+    border-bottom: 5px solid black;
+}
+
+.headingText {
+    background-color: inherit;
+    font-size: 3rem;
+    text-align: center;
+    padding: 2rem;
+}
+
+
+.inputField {
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    font-size: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 1rem;
+}
+
+.inputText {
+    font-size: 2rem;
+}
+
+.inputBox {
+    display: grid;
+    justify-content: space-around;
+}
+
+.buttonDiv {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#addMovie {
+    color: #ffffff;
+    background-color: black;
+    outline: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    transition: all 0.5s;
+
+    &:hover {
+        background-color: white;
+        color: black;
+        font-size: 1.1rem;
+    }
+}
+
+.uploadImage {
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 0.2rem;
+    padding: 0.1rem;
+    border: solid 1px black;
+    font-weight: bold;
+    margin: 0.5rem;
+    font-size: 1.5rem;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.uploadImageDisplayNone {
+    display: none;
+}
+
+
+// gallery
+.galleryMain {
+    height: 100vh;
+    width: 100vw;
+}
+
+.galleryParent {
+    display: flex;
+    height: auto;
+    width: 100vw;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.videoScreen {
+    height: 50vh;
+    min-width: 320px;
+    width: 100%;
+    flex: 1 1 320px;
+    outline: none;
+}
+
+.videoList {
+    height: 100vh;
+    width: 100%;
+    flex: 1 1 320px;
+}
