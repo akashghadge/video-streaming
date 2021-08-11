@@ -1,19 +1,32 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import Heading from './Heading';
 import VideoListSection from './VideoListSection';
 import VideoScreen from './VideoScreen';
 
 const Gallery = () => {
+    let [movieInScreen, setMovieInScreen] = useState({});
+    function onThumbClickMain(id) {
+        const urlForScreenMovie = `http://localhost:5000/api/movies/one-movie/${id}`;
+        axios.get(urlForScreenMovie)
+            .then((movie) => {
+                setMovieInScreen(movie.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
     return (
         <>
             <Heading text="Movies"></Heading>
             <div className="galleryMain">
                 <div className="galleryParent">
-                    <div className="videoScreen">
-                        <VideoScreen></VideoScreen>
+                    <div className="videoScreenMain">
+                        <VideoScreen movie={movieInScreen}></VideoScreen>
                     </div>
                     <div className="videoList">
-                        <VideoListSection></VideoListSection>
+                        <VideoListSection onThumbClickGallery={onThumbClickMain}></VideoListSection>
                     </div>
                 </div>
             </div>

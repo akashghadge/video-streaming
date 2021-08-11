@@ -21,9 +21,9 @@ require("./db/conn");
 
 
 // api routers
-
+const Movie = require("./routes/movie.route");
 // routes setting
-
+app.use("/api/movies", Movie);
 
 // // for production use
 // app.use(express.static("client/build"));
@@ -31,7 +31,9 @@ require("./db/conn");
 // app.get("*", (req, res) => {
 //     res.sendFile(path.join(__dirname, "client", "build", "index.html"))
 // })
-
+app.get("/", (req, res) => {
+    res.send("hello");
+})
 
 app.listen(port, () => {
     console.log("Server is listening on port ", port);
