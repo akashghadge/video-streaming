@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import OneVideo from './OneVideo';
 import axios from "axios"
+import Pagination from "./pagination/Pagination"
+import OneVideo from './OneVideo';
+
 const VideoListSection = (props) => {
     let [movieList, setMovieList] = useState([]);
     useEffect(() => {
@@ -17,14 +19,17 @@ const VideoListSection = (props) => {
     function onThumbClickList(id) {
         props.onThumbClickGallery(id);
     }
+
     return (
         <>
-            {
-                movieList.length == 0 ? <h1>No movies</h1>
-                    : movieList.map((val, i) => {
-                        return <OneVideo name={val.name} thumbURL={val.thumbURL} videoURL={val.videoURL} id={val._id} lang={val.lang} year={val.year} onThumbClick={onThumbClickList}></OneVideo>
-                    })
-            }
+            <Pagination
+                RenderComponent={OneVideo}
+                data={movieList}
+                title={"Videos"}
+                pageLimit={5}
+                dataLimit={10}
+                onThumbForPage={onThumbClickList}
+            ></Pagination>
         </>
     );
 }

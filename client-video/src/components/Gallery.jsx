@@ -3,9 +3,12 @@ import React, { useState } from 'react';
 import Heading from './Heading';
 import VideoListSection from './VideoListSection';
 import VideoScreen from './VideoScreen';
-
 const Gallery = () => {
-    let [movieInScreen, setMovieInScreen] = useState({});
+    let [movieInScreen, setMovieInScreen] = useState({
+        name: 'none',
+        year: Date.now(),
+        lang: 'english'
+    });
     function onThumbClickMain(id) {
         const urlForScreenMovie = `http://localhost:5000/api/movies/one-movie/${id}`;
         axios.get(urlForScreenMovie)
@@ -19,7 +22,6 @@ const Gallery = () => {
 
     return (
         <>
-            <Heading text="Movies"></Heading>
             <div className="galleryMain">
                 <div className="galleryParent">
                     <div className="videoScreenMain">

@@ -13,7 +13,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { AddBox, Dashboard, Home } from "@material-ui/icons"
+import { AddBox, Dashboard, Home, VideoLibrarySharp } from "@material-ui/icons"
 import { NavLink } from "react-router-dom"
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -95,33 +95,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 export default function PrimarySearchAppBar() {
-    let [notificationCount, setNotificationCount] = useState(0);
-    const LoggedUser = useSelector((state) => {
-        return state.User;
-    })
-    useEffect(() => {
-        console.log("use effect");
-        let token = localStorage.getItem("token");
-        if (token == null) {
-            setNotificationCount(0);
-        }
-        else {
-            const urlNotification = "/api/notification/all";
-            axios.post(urlNotification, {
-                token: token
-            })
-                .then((data) => {
-                    if (data.data == null || data.data.length == 0) {
-                        setNotificationCount(0);
-                    }
-                    else {
-                        setNotificationCount(data.data.length);
-                    }
-                })
-        }
-    }, [LoggedUser._id])
-
-
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -184,50 +157,17 @@ export default function PrimarySearchAppBar() {
             <NavLink exact to="/" className={classes.navlink}>
                 <MenuItem>
                     <IconButton aria-label="show 11 new notifications" color="inherit">
-                        <Home />
-                    </IconButton>
-                    <p>Home</p>
-                </MenuItem>
-            </NavLink>
-            <NavLink exact to="/create-post" className={classes.navlink}>
-                <MenuItem>
-                    <IconButton aria-label="show 11 new notifications" color="inherit">
                         <AddBox />
                     </IconButton>
-                    <p>Create</p>
+                    <p>Upload</p>
                 </MenuItem>
             </NavLink>
-            <NavLink exact to="/messages" className={classes.navlink}>
-                <MenuItem>
-                    <IconButton aria-label="show 4 new mails" color="inherit">
-                        <Badge badgeContent={0} color="secondary">
-                            <MailIcon />
-                        </Badge>
-                    </IconButton>
-                    <p>Messages</p>
-                </MenuItem>
-            </NavLink>
-            <NavLink exact to="/notifications" className={classes.navlink}>
+            <NavLink exact to="/video-list" className={classes.navlink}>
                 <MenuItem>
                     <IconButton aria-label="show 11 new notifications" color="inherit">
-                        <Badge badgeContent={notificationCount} color="secondary">
-                            <NotificationsIcon />
-                        </Badge>
+                        <VideoLibrarySharp />
                     </IconButton>
-                    <p>Notifications</p>
-                </MenuItem>
-            </NavLink>
-            <NavLink exact to="/profile" className={classes.navlink}>
-                <MenuItem onClick={handleProfileMenuOpen}>
-                    <IconButton
-                        aria-label="account of current user"
-                        aria-controls="primary-search-account-menu"
-                        aria-haspopup="true"
-                        color="inherit"
-                    >
-                        <AccountCircle />
-                    </IconButton>
-                    <p>Profile</p>
+                    <p>Video List</p>
                 </MenuItem>
             </NavLink>
         </Menu>
@@ -249,60 +189,24 @@ export default function PrimarySearchAppBar() {
                         </IconButton>
                     </NavLink>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        Social-Media
+                        Video Player
                     </Typography>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <NavLink exact to="/" className={classes.navlink}>
-                            <IconButton aria-label="show 4 new mails" color="inherit">
-                                <Badge color="secondary">
-                                    <Home />
-                                </Badge>
-                            </IconButton>
-                        </NavLink>
-                        <NavLink exact to="/create-post" className={classes.navlink}>
                             <IconButton aria-label="show 4 new mails" color="inherit">
                                 <Badge color="secondary">
                                     <AddBox />
                                 </Badge>
                             </IconButton>
                         </NavLink>
-                        <NavLink exact to="/messages" className={classes.navlink}>
+                        <NavLink exact to="/video-list" className={classes.navlink}>
                             <IconButton aria-label="show 4 new mails" color="inherit">
                                 <Badge badgeContent={0} color="secondary">
-                                    <MailIcon />
+                                    <VideoLibrarySharp></VideoLibrarySharp>
                                 </Badge>
                             </IconButton>
                         </NavLink>
-                        <NavLink exact to="/notifications" className={classes.navlink}>
-                            <IconButton aria-label="show 17 new notifications" color="inherit">
-                                <Badge badgeContent={notificationCount} color="secondary">
-                                    <NotificationsIcon />
-                                </Badge>
-                            </IconButton>
-                        </NavLink>
-                        <IconButton
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
-                            color="inherit">
-                            <AccountCircle />
-                        </IconButton>
                     </div>
                     <div className={classes.sectionMobile}>
                         <IconButton

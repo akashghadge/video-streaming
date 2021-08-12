@@ -5,30 +5,30 @@
 
 .parentHead {
   width: 100vw;
-  background-color: white;
-  margin-bottom: 1rem;
-  border-bottom: 5px solid black; }
+  background-color: #ffffff;
+  margin-bottom: 1rem; }
 
 .headingText {
   background-color: inherit;
   font-size: 3rem;
   text-align: center;
-  padding: 2rem; }
+  padding: 2rem;
+  color: #291fe6; }
 
 .inputField {
+  font-family: Arial, Helvetica, sans-serif;
+  outline: none;
   border: none;
   border-bottom: 2px solid black;
-  outline: none;
-  font-size: 2rem;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1rem;
   margin-left: 1rem; }
 
 .inputText {
-  font-size: 2rem; }
+  font-size: 1rem; }
 
 .inputBox {
   display: grid;
-  justify-content: space-around; }
+  justify-content: center; }
 
 .buttonDiv {
   margin-top: 2rem;
@@ -36,35 +36,33 @@
 
 #addMovie {
   color: #ffffff;
-  background-color: black;
+  background-color: #291fe6;
   outline: none;
   font-size: 1rem;
   padding: 0.5rem;
   border-radius: 0.4rem;
   transition: all 0.5s; }
   #addMovie:hover {
+    border: solid 2px #291fe6;
     background-color: white;
-    color: black;
+    color: #291fe6;
     font-size: 1.1rem; }
 
 .uploadImage {
   font-family: 'Times New Roman', Times, serif;
   border-radius: 0.2rem;
-  padding: 0.1rem;
   border: solid 1px black;
   font-weight: bold;
   margin: 0.5rem;
-  font-size: 1.5rem;
-  background-color: white;
-  border-radius: 5px; }
+  font-size: 0.8rem;
+  background-color: white; }
 
 .uploadImageDisplayNone {
   display: none; }
 
 .galleryMain {
   height: 100vh;
-  width: 100vw;
-  background-color: brown; }
+  width: 100vw; }
 
 .galleryParent {
   display: flex;
@@ -74,16 +72,15 @@
   flex-wrap: wrap; }
 
 .videoScreenMain {
-  margin-bottom: 2rem;
+  margin: 0;
   height: auto;
   min-width: 320px;
   width: 100%;
-  flex: 1 1 320px; }
+  flex: 1 1 500px; }
 
 .videoScreen {
   outline: none;
-  width: 100%;
-  height: 50vh; }
+  width: 100%; }
 
 .videoScreenMeta {
   padding: 1rem; }
@@ -94,7 +91,7 @@
 .videoList {
   height: 100vh;
   width: 100%;
-  flex: 1 1 320px;
+  flex: 1 1 250px;
   overflow-y: scroll;
   overflow-x: hidden; }
 
@@ -103,9 +100,8 @@
 
 .oneVideo {
   display: flex;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-  background-color: #ffd2d2; }
+  margin: 0.5rem;
+  background-color: #ddd2ff; }
 
 .oneVideoThumb {
   width: 100px;
@@ -123,3 +119,50 @@
 .oneVideoDate {
   font-size: 0.5rem;
   font-style: italic; }
+
+@media (max-width: 700px) {
+  .html {
+    font-size: 50%; } }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.paginationItem {
+  background: #fff;
+  border: 2px solid #666;
+  padding: 10px 15px;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  margin: 0 5px;
+  cursor: pointer; }
+
+.paginationItem span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.prev,
+.next {
+  background: #fff;
+  border: none;
+  padding: 5px;
+  color: blue;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  margin: 0 10px;
+  cursor: pointer; }
+
+.paginationItem.active {
+  border: 1px solid #888;
+  color: #888;
+  pointer-events: none; }
+
+.prev.disabled,
+.next.disabled {
+  pointer-events: none;
+  box-shadow: none;
+  color: #999; }

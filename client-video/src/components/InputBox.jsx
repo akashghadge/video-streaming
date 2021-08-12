@@ -86,45 +86,50 @@ const InputBox = () => {
     }
     return (
         <>
-            <div className="inputBox">
-                <form>
-                    <span className="inputText">Movie Name :</span>
-                    <input className="inputField" type="text" required id="name" onChange={inputChange} value={movieData.name}></input>
-                    <br></br>
-                    <span className="inputText">Language :</span>
-                    <input className="inputField" type="text" required id="lang" onChange={inputChange} value={movieData.lang}></input>
-                    <br></br>
-                    <span className="inputText">Year :</span>
-                    <input className="inputField" type="date" required id="year" onChange={inputChange} value={movieData.year}></input>
-                    <br></br>
-                    {/* thumbline */}
-                    <span className="inputText">Thumbline :</span>
-                    <label htmlFor="ProfilePic" className="uploadImage">
-                        Upload
-                    </label>
-                    <input type="file" id="ProfilePic" className="uploadImageDisplayNone" onChange={fileInputChange} accept="image/*">
-                    </input>
-                    <span style={{ color: 'black' }}>{
-                        photo == null ? "no file" : photo.name}</span>
-                    <br></br>
-                    {/* video */}
-                    <span className="inputText">Video :</span>
-                    <label htmlFor="videoFile" className="uploadImage">
-                        Upload
-                    </label>
-                    <input type="file" id="videoFile" className="uploadImageDisplayNone" onChange={videoInputChange} accept="video/*">
-                    </input>
-                    <span style={{ color: 'black' }}>{
-                        video == null ? "no file" : video.name
-                    }</span>
-                    <div className="buttonDiv">
-                        {
-                            uploadStart ? <CircularProgressWithLabel value={uploadPercentage}></CircularProgressWithLabel> :
-                                <button type="submit" onClick={submitMovie} id="addMovie">Add Movie</button>
-                        }
+            <form>
+                <div className="inputBox">
+                    <div>
+
+                        <span className="inputText">Movie Name</span>
+                        <input className="inputField" type="text" required id="name" onChange={inputChange} value={movieData.name}></input>
+                        <br></br>
+                        <span className="inputText" style={{ marginRight: "1.1rem" }}>Language</span>
+                        <input className="inputField" type="text" required id="lang" onChange={inputChange} value={movieData.lang}></input>
+                        <br></br>
+                        <span className="inputText" style={{ marginRight: '3rem' }}>Year </span>
+                        <input className="inputField" type="date" required id="year" onChange={inputChange} value={movieData.year}></input>
+                        <br></br>
+                        {/* thumbline */}
+                        <br></br>
+                        <span className="inputText" style={{ marginRight: "5rem" }}>Thumbline</span>
+                        <label htmlFor="ProfilePic" className="uploadImage">
+                            Upload
+                        </label>
+                        <input type="file" id="ProfilePic" className="uploadImageDisplayNone" onChange={fileInputChange} accept="image/*">
+                        </input>
+                        <span style={{ color: 'black' }}>{
+                            photo == null ? "no file" : photo.name}</span>
+                        <br></br>
+                        {/* video */}
+                        <br></br>
+                        <span className="inputText" style={{ marginRight: "6.75rem" }}>Video </span>
+                        <label htmlFor="videoFile" className="uploadImage">
+                            Upload
+                        </label>
+                        <input type="file" id="videoFile" className="uploadImageDisplayNone" onChange={videoInputChange} accept="video/*">
+                        </input>
+                        <span style={{ color: 'black' }}>{
+                            video == null ? "no file" : video.name
+                        }</span>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div className="buttonDiv">
+                    {
+                        uploadStart ? <CircularProgressWithLabel value={uploadPercentage}></CircularProgressWithLabel> :
+                            <button type="submit" onClick={submitMovie} id="addMovie">Add Movie</button>
+                    }
+                </div>
+            </form>
         </>
     );
 }
